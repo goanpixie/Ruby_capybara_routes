@@ -1,26 +1,9 @@
 require 'rails_helper'
-
-RSpec.describe LoginersController, type: :controller do
-
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
+describe LoginersController do
+  it "routes /loginers/index to the loginers controller" do
+    expect(:get => "/loginers/index").to route_to(:controller => "loginers", :action => "index")
   end
-
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
+  it "routes /loginers/:id to loginers profile" do
+    expect(:get => "/loginers/1").to route_to(:controller => "loginers", :action => "show", :id => "1")
   end
-
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
-
 end
